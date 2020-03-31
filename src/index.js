@@ -1,7 +1,26 @@
 import Vue from 'vue';
 import App from './components/App.vue';
 
+// Vuex
+// import { store } from './vuex.js';
+
+// VueRouter
+import VueRouter from 'vue-router';
+import { routes } from './components/App.vue';
+
+// Vuetify
+// import Vuetify from 'vuetify';
+// Vue.use(Vuetify);
+
+Vue.use(VueRouter);
+const router = new VueRouter({
+    mode: 'history',
+    routes 
+});
+
 new Vue({
     el: '#app',
-	render: h => h (App)
+    // store,
+    render: h => h (App),
+    router
 });
