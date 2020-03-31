@@ -2,6 +2,7 @@
     <div class="wrapper">
         <h2>{{articleHeader}}</h2>
         <p v-for="(item, i) in articleContent" :key="i">{{item}}</p>
+        <h2 v-if="articleError">Не удалось загрузить данные</h2>
     </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
         return {
             articleHeader: null,
             articleContent: [],
+            articleError: false,
         };
     },
     created() {
@@ -21,7 +23,8 @@ export default {
             .then(({ header, content }) => {
                 this.articleHeader = header;
                 this.articleContent = content;
-            });
+            })
+            .catch(error => this.articleError = true)
     }
 }
 </script>
