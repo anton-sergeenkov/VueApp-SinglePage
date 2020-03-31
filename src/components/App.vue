@@ -7,21 +7,12 @@
 
 <script>
 import Menu from './Menu.vue';
-import PageArticle from './PageArticle.vue';
-import PageIndex from './PageIndex.vue';
-import Page404 from './Page404.vue';
 
 export default {
     components: {
         'app-menu': Menu
     }
 }
-
-export const routes = [
-    { path: '/',        component: PageIndex,   name: 'index'   },
-    { path: '/article', component: PageArticle, name: 'article' },
-    { path: '*',        component: Page404,     name: 'page404' }
-]
 </script>
 
 <style>

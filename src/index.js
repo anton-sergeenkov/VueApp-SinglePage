@@ -6,7 +6,7 @@ import App from './components/App.vue';
 
 // VueRouter
 import VueRouter from 'vue-router';
-import { routes } from './components/App.vue';
+import { routes } from './routes';
 
 // Vuetify
 // import Vuetify from 'vuetify';

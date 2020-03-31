@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="wrapper">
         Page404
     </div>
 </template>
