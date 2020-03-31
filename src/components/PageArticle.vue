@@ -1,7 +1,7 @@
 <template>
     <div class="wrapper">
         <h2>{{articleHeader}}</h2>
-        <p>{{articleContent}}</p>
+        <p v-for="(item, i) in articleContent" :key="i">{{item}}</p>
     </div>
 </template>
 
@@ -12,7 +12,7 @@ export default {
     data() {
         return {
             articleHeader: null,
-            articleContent: null,
+            articleContent: [],
         };
     },
     created() {
@@ -27,5 +27,9 @@ export default {
 </script>
 
 <style scoped>
-
+p::first-letter {
+    font-size: var(--font-h2);
+    font-weight: bold;
+    color: var(--color-accent-dark);
+}
 </style>

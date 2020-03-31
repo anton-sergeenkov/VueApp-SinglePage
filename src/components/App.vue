@@ -39,6 +39,7 @@ body {
     padding: 0;
     font-size: var(--font-main);
     font-family: sans-serif;
+    line-height: 1.5;
 }
 .wrapper {
     max-width: 1920px;
@@ -52,6 +53,7 @@ h1 {
     font-size: var(--font-h1);
 }
 h2 {
+    font-weight: normal;
     color: var(--color-dark);
     font-size: var(--font-h2);
 }
