@@ -32,18 +32,20 @@ export default {
     outline: none;
     background: none;
     color: #000;
+    font-size: 14px;
     font-family: inherit;
     text-decoration: none;
     cursor: pointer;
     transition: 0.4s;
-
-    font-size: 14px;
 }
 .button:hover {
-    opacity: 0.9;
+    opacity: 0.8;
+    filter: grayscale(100%);
+}
+.button--primary, .button--secondary, .button--flat {
+    border-radius: 3px;
 }
 .button--primary, .button--secondary {
-    border-radius: 3px;
     font-weight: bold;
 }
 

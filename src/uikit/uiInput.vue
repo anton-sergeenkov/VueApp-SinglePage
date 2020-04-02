@@ -1,13 +1,24 @@
 <template>
     <div class="input-text">
         <input
+            v-if="!multiline"
             @input="$emit('input', $event.target.value)" 
             @focus="onFocus" 
             @blur="onBlur($event.target.value)" 
             :class="classes" 
             class="input"
             :type="type"
+            rows="1"
         />
+        <textarea
+            v-else
+            @input="$emit('input', $event.target.value)" 
+            @focus="onFocus" 
+            @blur="onBlur($event.target.value)" 
+            :class="classes" 
+            class="input"
+            rows="7"
+        ></textarea>
         <label :class="{ active:focused }" v-html="label"></label>
     </div>
 </template>
@@ -20,8 +31,9 @@ export default {
         }
     },
     props: {
-        label: { type: String },
-        type:  { type: String, default: 'text' }
+        label:     { type: String },
+        type:      { type: String, default: 'text' },
+        multiline: { type: Boolean, default: false },
     },
     methods: {
         onFocus() {

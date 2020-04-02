@@ -8,15 +8,16 @@
         />
 
         <ui-input
-            class="input1"
+            class="input-comment"
             v-model="inputName"
             label="Имя пользователя"
         />
 
         <ui-input
-            class="input1"
+            class="input-comment"
             v-model="inputComment"
             label="Текст комментария"
+            multiline
         />
 
         <ui-button
@@ -54,7 +55,7 @@ export default {
     margin: auto;
     margin-top: 30px;
 }
-.input1 {
+.input-comment {
     margin-top: 30px;
 }
 .btn-comment-add {
