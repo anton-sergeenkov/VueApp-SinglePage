@@ -5,16 +5,14 @@ import { store } from './store.js';
 
 import App from './components/App.vue';
 
+import './uikit';
+
 Vue.use(VueRouter);
 
 const router = new VueRouter({
     mode: 'history',
     routes 
 });
-
-// Vuetify
-// import Vuetify from 'vuetify';
-// Vue.use(Vuetify);
 
 new Vue({
     el: '#app',

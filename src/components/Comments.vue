@@ -9,6 +9,8 @@
         </div>
 
         <app-error-api v-if="articleError" />
+
+        <app-comment-add />
     </div>
 </template>
 
@@ -16,10 +18,13 @@
 import { mapGetters, mapActions } from 'vuex'
 import { fetchComment } from '../api/articleService';
 import ErrorApi from './ErrorApi.vue';
+import CommentAdd from './CommentAdd.vue';
+
 
 export default {
     components: {
-        'app-error-api': ErrorApi
+        'app-error-api': ErrorApi,
+        'app-comment-add': CommentAdd,
     },
     computed: {
         ...mapGetters(['getComments'])

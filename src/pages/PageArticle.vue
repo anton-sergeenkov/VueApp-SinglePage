@@ -11,7 +11,6 @@
 import Comments from '../components/Comments.vue';
 import ErrorApi from '../components/ErrorApi.vue';
 import { fetchArticle } from '../api/articleService';
-// import { getCurrentDate } from '../utils/getCurrentDate';
 
 export default {
     components: {
