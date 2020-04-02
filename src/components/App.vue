@@ -27,6 +27,7 @@ export default {
     --font-h1:           23px;
     --font-h2:           21px;
     --margin-menu:       50px;
+    --box-shadow:        0 0px 15px rgba(5, 31, 43, .05);
 }
 ::-webkit-scrollbar       { width: 7px; height: 7px;}
 ::-webkit-scrollbar-thumb { height: 50px; background-color: var(--color-medium); border-radius: 2px;}

@@ -47,15 +47,15 @@ export default {
         "user text"
         "date text";
     margin-top: 20px;
-	box-shadow:
-		0 16px 24px 2px rgba(33,37,41,.02), 
-		0 6px 30px 5px rgba(33,37,41,.04), 
-		0 8px 10px -5px rgba(33,37,41,.1);
+	box-shadow: var(--box-shadow);
 }
 .comments-user {
     grid-area: user;
     text-align: center;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
 }
 .comments-date {
     grid-area: date;
