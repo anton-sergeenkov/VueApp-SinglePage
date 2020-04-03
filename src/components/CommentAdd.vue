@@ -23,8 +23,8 @@
             />
         </div>
 
-        <ui-toast v-if="showWarning" theme="warning" @close="closeWarning">
-            Заполните все обязательные поля
+        <ui-toast v-if="showWarning" theme="error" @close="closeWarning">
+            Напишите комментарий
         </ui-toast>
     </div>
 </template>

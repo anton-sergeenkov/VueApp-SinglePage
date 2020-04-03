@@ -15,7 +15,7 @@
             />
         </div>
 
-        <span v-else>⚡️ Привет <strong>{{userName}}</strong>!</span>
+        <span v-else>⚡️ Привет, <strong>{{userName}}</strong>!</span>
 
         <ui-dialog v-if="openModal" @close="closeModal">
             <template v-slot:header>Вход на сайт</template>
@@ -33,7 +33,7 @@
             </template>
         </ui-dialog>
 
-        <ui-toast v-if="showWarning" theme="warning" @close="closeWarning">
+        <ui-toast v-if="showWarning" theme="error" @close="closeWarning">
             Неверный логин или пароль
         </ui-toast>
     </div>
