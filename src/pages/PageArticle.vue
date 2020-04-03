@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Comments from '../components/Comments.vue';
+import Comments from '../components/Comments/Comments.vue';
 import ErrorApi from '../components/ErrorApi.vue';
 import { fetchArticle } from '../api/articleService';
 

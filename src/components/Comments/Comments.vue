@@ -16,8 +16,8 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { fetchComment } from '../api/articleService';
-import ErrorApi from './ErrorApi.vue';
+import { fetchComment } from '../../api/articleService';
+import ErrorApi from '../ErrorApi.vue';
 import CommentAdd from './CommentAdd.vue';
 
 export default {

@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import User from './User.vue'
+import User from './User/User.vue'
 
 export default {
     components: {

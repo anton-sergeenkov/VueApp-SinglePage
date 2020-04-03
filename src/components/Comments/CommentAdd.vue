@@ -31,7 +31,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { getCurrentDate } from '../utils/getCurrentDate';
+import { getCurrentDate } from '../../utils/getCurrentDate';
 
 export default {
     data() {

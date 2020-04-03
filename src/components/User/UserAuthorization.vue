@@ -24,7 +24,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { fetchUsers } from '../api/usersService';
+import { fetchUsers } from '../../api/usersService';
 
 export default {
     data() {
