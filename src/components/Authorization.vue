@@ -15,18 +15,16 @@
             />
         </div>
 
-        <strong v-else>Имя пользователя</strong>
+        <span v-else>⚡️ Привет <strong>{{userName}}</strong>!</span>
 
         <ui-dialog v-if="openModal" @close="closeModal">
             <template v-slot:header>Вход на сайт</template>
             <template v-slot:form>
                 <form @submit.prevent="checkForm" class="wrapper-form">
-                    <p>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. 
-                        Expedita architecto impedit a quam ad recusandae repellendus 
-                        voluptatem amet quo, dolore sunt id incidunt asperiores omnis 
-                        alias doloribus inventore. Iusto, laborum
-                    </p>
+                    <div>
+                        <ui-input class="form-input-comment" v-model="inputName" label="Имя пользователя*" />
+                        <ui-input class="form-input-comment" v-model="inputPassword" label="Пароль*" type="password" />
+                    </div>
                     <div class="wrapper-form-btn">
                         <ui-button class="form-btn" label="Отмена" @click.native.prevent="closeModal" />
                         <ui-button class="form-btn" label="Ок" theme="primary" />
@@ -35,6 +33,9 @@
             </template>
         </ui-dialog>
 
+        <ui-toast v-if="showWarning" theme="warning" @close="closeWarning">
+            Неверный логин или пароль
+        </ui-toast>
     </div>
 </template>
 
@@ -46,15 +47,35 @@ export default {
         return {
             userAuthorized: false,
             users: null,
-            openModal: false
+            openModal: false,
+            inputName: '',
+            inputPassword: '',
+            showWarning: false,
+            userName: null
         };
     },
     methods: {
+        closeWarning() {
+            this.showWarning = false;
+        },
         closeModal() {
             this.openModal = false;
         },
         checkForm() {
-			alert('ok');
+            if (this.users[this.inputName]) {
+                const password = this.users[this.inputName].password;
+                const name = this.users[this.inputName].name;
+
+                if (password == this.inputPassword) {
+                    this.closeModal();
+                    this.userName = name;
+                    this.userAuthorized = true;
+                } else {
+                    this.showWarning = true;
+                }
+            } else {
+                this.showWarning = true;
+            }
         },
         handlerAuthorization() {
             this.openModal = true;
@@ -84,9 +105,6 @@ export default {
     line-height: 1.5;
     padding: 20px;
 }
-.wrapper-form p {
-    margin-bottom: 30px;
-}
 
 .wrapper-form-btn {
     display: flex;
@@ -96,5 +114,8 @@ export default {
 .form-btn {
     margin: 0 5px;
     min-width: 150px;
+}
+.form-input-comment {
+    margin-top: 30px;
 }
 </style>
