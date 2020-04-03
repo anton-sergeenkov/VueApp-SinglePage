@@ -10,7 +10,7 @@ export const store = new Vuex.Store({
            authorized: false,
            login: '',
            password: '',
-           name: ''
+           name: '',
         },
     },
     getters: {
@@ -19,7 +19,7 @@ export const store = new Vuex.Store({
         },
         getUser(state) {
             return state.user;
-        }
+        },
     },
     mutations: {
         SET_COMMENTS(state, payload) {
@@ -27,7 +27,7 @@ export const store = new Vuex.Store({
         },
         SET_USER(state, payload) {
             state.user = payload.user;
-        }
+        },
     },
     actions: {
         setComments({ commit }, comments) {
@@ -37,6 +37,6 @@ export const store = new Vuex.Store({
         setUser({ commit }, user) {
             commit('SET_USER', { user: user });
             return user;
-        }
-    }
+        },
+    },
 });

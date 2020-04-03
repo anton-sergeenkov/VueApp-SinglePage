@@ -4,7 +4,6 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const VueLoaderPlugin = require('vue-loader/lib/plugin');
 
 module.exports = {
-	// runtimeCompiler: true,
 	mode: 'development',
 	devtool: 'source-map',
     entry: './src/index.js',
@@ -45,22 +44,6 @@ module.exports = {
 				use: [
 					'vue-style-loader',
 					'css-loader'
-					// MiniCssExtractPlugin.loader,
-					// {
-					// 	loader: 'css-loader',
-					// 	options: {
-					// 		importLoaders: 1,
-					// 		modules: true,
-					// 		sourceMap: true
-					// 	}
-					// },
-					// {
-					//     loader: 'postcss-loader',
-					//     options: {
-					// 		config: { path: './postcss.config.js' },
-					//         sourceMap: true
-					//     }
-					// },
 				]
 			},
 			{
