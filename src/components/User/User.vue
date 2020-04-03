@@ -1,14 +1,14 @@
 <template>
     <div>
-        <div v-if="!getUser.authorized" class="wrapper-authorization">
+        <div v-if="!getUser.authorized" class="user-wrapper">
             <ui-button
-                class="btn"
+                class="user-btn"
                 @click.native="handlerAuthorization"
                 label="Авторизация"
                 theme="flat"
             />
             <ui-button
-                class="btn"
+                class="user-btn"
                 @click.native="handlerRegistration"
                 label="Регистрация"
                 theme="flat"
@@ -55,15 +55,15 @@ export default {
         closeModalRegistration() {
             this.openModalRegistration = false;
         }
-    }
+    },
 }
 </script>
 
 <style scoped>
-.wrapper-authorization {
+.user-wrapper {
     display: flex;
 }
-.btn {
+.user-btn {
     margin: 0 5px;
 }
 </style>

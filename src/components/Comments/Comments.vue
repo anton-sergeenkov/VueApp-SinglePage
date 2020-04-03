@@ -41,7 +41,7 @@ export default {
             .then(res => res.json())
             .then(data => this.setComments(data))
             .catch(error => this.articleError = true)
-    }
+    },
 }
 </script>
 
@@ -61,16 +61,16 @@ export default {
 }
 .comments-user {
     grid-area: user;
-    text-align: center;
-    font-weight: bold;
     display: flex;
     justify-content: center;
     align-items: flex-end;
+    text-align: center;
+    font-weight: bold;
 }
 .comments-date {
     grid-area: date;
-    text-align: center;
     font-size: 12px;
+    text-align: center;
     color: var(--color-dark);
 }
 .comments-text {

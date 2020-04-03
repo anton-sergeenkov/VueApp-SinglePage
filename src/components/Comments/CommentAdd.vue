@@ -2,7 +2,7 @@
     <div>
         <ui-button
             v-if="getUser.authorized"
-            class="btn-comment-new"
+            class="comment-btn-new"
             @click.native="handlerCommentAdd"
             label="Новый комментарий"
             theme="primary"
@@ -10,13 +10,13 @@
 
         <div v-if="showForm">
             <ui-input
-                class="input-comment"
+                class="comment-input"
                 v-model="inputComment"
                 label="Текст комментария*"
                 multiline
             />
             <ui-button
-                class="btn-comment-add"
+                class="comment-btn-add"
                 @click.native="handlerCommentSubmit"
                 label="Добавить комментарий"
                 theme="primary"
@@ -71,19 +71,19 @@ export default {
             }
         },
         ...mapActions(['setComments'])
-    }
+    },
 }
 </script>
 
 <style scoped>
-.btn-comment-new {
+.comment-btn-new {
     margin: auto;
     margin-top: 30px;
 }
-.input-comment {
+.comment-input {
     margin-top: 30px;
 }
-.btn-comment-add {
+.comment-btn-add {
     margin: auto;
     margin-top: 30px;
 }

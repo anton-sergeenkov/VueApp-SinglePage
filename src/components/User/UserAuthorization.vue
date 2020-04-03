@@ -3,12 +3,12 @@
         <ui-dialog @close="closeModal">
             <template v-slot:header>Авторизация</template>
             <template v-slot:form>
-                <form @submit.prevent="checkForm" class="wrapper-form">
+                <form @submit.prevent="checkForm" class="form-wrapper">
                     <div>
-                        <ui-input class="form-input-comment" v-model="forms.login" label="Логин*" />
-                        <ui-input class="form-input-comment" v-model="forms.password" label="Пароль*" type="password" />
+                        <ui-input class="form-input" v-model="forms.login" label="Логин*" />
+                        <ui-input class="form-input" v-model="forms.password" label="Пароль*" type="password" />
                     </div>
-                    <div class="wrapper-form-btn">
+                    <div class="form-wrapper-btn">
                         <ui-button class="form-btn" label="Отмена" @click.native.prevent="closeModal" />
                         <ui-button class="form-btn" label="Ок" theme="primary" />
                     </div>
@@ -78,26 +78,26 @@ export default {
             .then(res => res.json())
             .then(data => this.users = data)
             .catch(error => console.log(error))
-    }
+    },
 }
 </script>
 
 <style scoped>
-.wrapper-form {
+.form-wrapper {
     width: 400px;
-    line-height: 1.5;
     padding: 20px;
+    line-height: 1.5;
 }
-.form-input-comment {
-    margin-top: 30px;
-}
-.wrapper-form-btn {
+.form-wrapper-btn {
     display: flex;
     justify-content: center;
     margin-top: 45px;
 }
+.form-input {
+    margin-top: 30px;
+}
 .form-btn {
-    margin: 0 5px;
     min-width: 150px;
+    margin: 0 5px;
 }
 </style>
