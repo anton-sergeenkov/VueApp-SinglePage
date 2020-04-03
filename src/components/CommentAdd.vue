@@ -6,20 +6,17 @@
             label="Новый комментарий"
             theme="primary"
         />
-
         <ui-input
             class="input-comment"
             v-model="inputName"
             label="Имя пользователя"
         />
-
         <ui-input
             class="input-comment"
             v-model="inputComment"
             label="Текст комментария"
             multiline
         />
-
         <ui-button
             class="btn-comment-add"
             @click.native="handlerCommentSubmit"

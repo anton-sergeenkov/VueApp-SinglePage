@@ -1,5 +1,5 @@
-const URL_GET_ARTICLE = 'https://api.myjson.com/bins/10rgnw';
-const URL_GET_COMMENT = 'https://api.myjson.com/bins/13qzvs';
+const URL_GET_ARTICLE = 'https://web-notes.github.io/files/json-vue-app/get_article.json';
+const URL_GET_COMMENT = 'https://web-notes.github.io/files/json-vue-app/get_comment.json';
 
 // Возвращаемые данные
 // {
