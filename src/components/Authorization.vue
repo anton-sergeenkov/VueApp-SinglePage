@@ -15,14 +15,14 @@
             />
         </div>
 
-        <span v-else>⚡️ Привет, <strong>{{userName}}</strong>!</span>
+        <span v-else>⚡️ Привет, <strong>{{getUser.name}}</strong>!</span>
 
         <ui-dialog v-if="openModalAuthorization" @close="closeModalAuthorization">
-            <template v-slot:header>Вход на сайт</template>
+            <template v-slot:header>Авторизация</template>
             <template v-slot:form>
                 <form @submit.prevent="checkFormAuthorization" class="wrapper-form">
                     <div>
-                        <ui-input class="form-input-comment" v-model="inputAuthorization.login" label="Имя пользователя*" />
+                        <ui-input class="form-input-comment" v-model="inputAuthorization.login" label="Логин*" />
                         <ui-input class="form-input-comment" v-model="inputAuthorization.password" label="Пароль*" type="password" />
                     </div>
                     <div class="wrapper-form-btn">
@@ -33,9 +33,31 @@
             </template>
         </ui-dialog>
 
-        <ui-toast v-if="showWarning" theme="error" @close="closeWarning">
+        <ui-toast v-if="showWarningAuthorization" theme="error" @close="closeWarningAuthorization">
             Неверный логин или пароль
         </ui-toast>
+
+        <ui-dialog v-if="openModalRegistration" @close="closeModalRegistration">
+            <template v-slot:header>Регистрация</template>
+            <template v-slot:form>
+                <form @submit.prevent="checkFormRegistration" class="wrapper-form">
+                    <div>
+                        <ui-input class="form-input-comment" v-model="inputRegistration.login" label="Логин*" />
+                        <ui-input class="form-input-comment" v-model="inputRegistration.password" label="Пароль*" type="password" />
+                        <ui-input class="form-input-comment" v-model="inputRegistration.name" label="Отображаемое имя*" />
+                    </div>
+                    <div class="wrapper-form-btn">
+                        <ui-button class="form-btn" label="Отмена" @click.native.prevent="closeModalRegistration" />
+                        <ui-button class="form-btn" label="Ок" theme="primary" />
+                    </div>
+                </form>
+            </template>
+        </ui-dialog>
+
+        <ui-toast v-if="showWarningRegistration" theme="error" @close="closeWarningRegistration">
+            Заполните все поля
+        </ui-toast>
+
     </div>
 </template>
 
@@ -47,13 +69,23 @@ export default {
     data() {
         return {
             users: null,
+    
+            // authorization
             openModalAuthorization: false,
             inputAuthorization: {
                 login: '',
                 password: '',
             },
-            showWarning: false,
-            userName: null
+            showWarningAuthorization: false,
+
+            // registration
+            openModalRegistration: false,
+            inputRegistration: {
+                login: '',
+                password: '',
+                name: ''
+            },
+            showWarningRegistration: false,
         };
     },
     computed: {
@@ -61,8 +93,10 @@ export default {
     },
     methods: {
         ...mapActions(['setUser']),
-        closeWarning() {
-            this.showWarning = false;
+
+        // authorization
+        handlerAuthorization() {
+            this.openModalAuthorization = true;
         },
         closeModalAuthorization() {
             this.openModalAuthorization = false;
@@ -77,7 +111,6 @@ export default {
 
                 if (password == inputPassword) {
                     this.closeModalAuthorization();
-                    this.userName = name;
                     this.setUser({
                         authorized: true,
                         login: inputLogin,
@@ -85,22 +118,45 @@ export default {
                         name
                     });
                 } else {
-                    this.showWarning = true;
+                    this.showWarningAuthorization = true;
                 }
             } else {
-                this.showWarning = true;
+                this.showWarningAuthorization = true;
             }
         },
-        handlerAuthorization() {
-            this.openModalAuthorization = true;
+        closeWarningAuthorization() {
+            this.showWarningAuthorization = false;
         },
 
-
-
-
+        // registration
         handlerRegistration() {
-            alert('handlerRegistration');
-        }
+            this.openModalRegistration = true;
+        },
+        closeModalRegistration() {
+            this.openModalRegistration = false;
+        },
+        checkFormRegistration() {
+            const inputLogin = this.inputRegistration.login;
+            const inputPassword = this.inputRegistration.password;
+            const inputName = this.inputRegistration.name;
+
+            if (inputLogin && inputPassword && inputName) {
+                this.setUser({
+                    authorized: true,
+                    login: inputLogin,
+                    password: inputPassword,
+                    name: inputName
+                });
+
+                this.closeModalRegistration();
+            } else {
+                this.showWarningRegistration = true;
+            }
+        },
+        closeWarningRegistration() {
+            this.showWarningRegistration = false;
+        },
+
     },
     created() {
         fetchUsers()
