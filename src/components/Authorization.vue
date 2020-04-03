@@ -17,16 +17,16 @@
 
         <span v-else>⚡️ Привет, <strong>{{userName}}</strong>!</span>
 
-        <ui-dialog v-if="openModal" @close="closeModal">
+        <ui-dialog v-if="openModalAuthorization" @close="closeModalAuthorization">
             <template v-slot:header>Вход на сайт</template>
             <template v-slot:form>
-                <form @submit.prevent="checkForm" class="wrapper-form">
+                <form @submit.prevent="checkFormAuthorization" class="wrapper-form">
                     <div>
-                        <ui-input class="form-input-comment" v-model="inputName" label="Имя пользователя*" />
-                        <ui-input class="form-input-comment" v-model="inputPassword" label="Пароль*" type="password" />
+                        <ui-input class="form-input-comment" v-model="inputAuthorization.login" label="Имя пользователя*" />
+                        <ui-input class="form-input-comment" v-model="inputAuthorization.password" label="Пароль*" type="password" />
                     </div>
                     <div class="wrapper-form-btn">
-                        <ui-button class="form-btn" label="Отмена" @click.native.prevent="closeModal" />
+                        <ui-button class="form-btn" label="Отмена" @click.native.prevent="closeModalAuthorization" />
                         <ui-button class="form-btn" label="Ок" theme="primary" />
                     </div>
                 </form>
@@ -47,9 +47,11 @@ export default {
     data() {
         return {
             users: null,
-            openModal: false,
-            inputName: '',
-            inputPassword: '',
+            openModalAuthorization: false,
+            inputAuthorization: {
+                login: '',
+                password: '',
+            },
             showWarning: false,
             userName: null
         };
@@ -62,20 +64,23 @@ export default {
         closeWarning() {
             this.showWarning = false;
         },
-        closeModal() {
-            this.openModal = false;
+        closeModalAuthorization() {
+            this.openModalAuthorization = false;
         },
-        checkForm() {
-            if (this.users[this.inputName]) {
-                const password = this.users[this.inputName].password;
-                const name = this.users[this.inputName].name;
+        checkFormAuthorization() {
+            const inputLogin = this.inputAuthorization.login;
+            const inputPassword = this.inputAuthorization.password;
 
-                if (password == this.inputPassword) {
-                    this.closeModal();
+            if (this.users[inputLogin]) {
+                const password = this.users[inputLogin].password;
+                const name = this.users[inputLogin].name;
+
+                if (password == inputPassword) {
+                    this.closeModalAuthorization();
                     this.userName = name;
                     this.setUser({
                         authorized: true,
-                        login: this.inputName,
+                        login: inputLogin,
                         password,
                         name
                     });
@@ -87,8 +92,12 @@ export default {
             }
         },
         handlerAuthorization() {
-            this.openModal = true;
+            this.openModalAuthorization = true;
         },
+
+
+
+
         handlerRegistration() {
             alert('handlerRegistration');
         }
